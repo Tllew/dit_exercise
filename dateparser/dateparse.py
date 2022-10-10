@@ -1,6 +1,5 @@
 import datetime
 from dateutil.relativedelta import relativedelta
-import re
 
 
 units = {
@@ -17,7 +16,6 @@ def parse(inputString):
     date = getDate(inputString)
     if date:
         delimeters = getDelimeters(inputString)
-        print(delimeters)
         for delimeter in delimeters:
             date = applyDelimeter(date, delimeter)
     else:
@@ -69,8 +67,6 @@ def addDate(date, unit, value):
 
 def subDate(date, unit, value):
     decrementValue = {units[unit]: int(value)}
-    print(decrementValue)
-    print("decdate")
     return date - relativedelta(**decrementValue)
 
 
@@ -82,6 +78,7 @@ def snapDate(date, unit):
 
 def getSnapDict(unit):
     snapdown = ["year", "month", "day", "hour", "minute", "second", "microsecond"]
+    # removed the s from the units map
     snapValue = units[unit][:-1]
     snaps = snapdown[snapdown.index(snapValue) + 1 :]
     snapDict = {}
