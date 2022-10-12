@@ -3,7 +3,8 @@
 Tomos Williams DIT excercise
 
 To Run tests:
+
 ```
 poetry install
-pytest
+poetry run pytest
 ```
